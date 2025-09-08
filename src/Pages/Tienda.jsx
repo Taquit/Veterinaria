@@ -1,46 +1,24 @@
 import React from "react";
-import toy2 from'../assets/toy2.jpg'
+import { useFetchTienda } from "../CustomHooks/useFetchTienda";
+import TiendaCard from "./Cards/TiendaCard";
+import { data } from "react-router-dom";
 
 function Tienda(){
+  const tiendaData =useFetchTienda("https://pokeapi.co/api/v2/pokemon/")
+  
+  return(
+    <>
+      <h1>Todos los objetos </h1>
+      <div>
+        {
+          tiendaData.map((obj,index)=> (
+            <TiendaCard key={index} tiendaData= {obj}></TiendaCard>
+          ))
+        }
+      </div>
+    </>
+  )
 
-    return(
-        <>
-            <div className="tienda-container">
-  <h1>Tienda de "Animals Friends Resort"</h1>
-  <div className="tienda-grid">
-    <div className="tienda-item">
-      <img src={toy2} alt="Juguete de perro" />
-      <h4>Nombre del juguete</h4>
-      <p>Precio $0000</p>
-      <div className="descripcion">Descripción</div>
-      <button>Comprar</button>
-    </div>
-    <div className="tienda-item">
-      <img src={toy2} alt="Juguete de perro" />
-      <h4>Nombre del juguete</h4>
-      <p>Precio $0000</p>
-      <div className="descripcion">Descripción</div>
-      <button>Comprar</button>
-    </div>
-    <div className="tienda-item">
-      <img src={toy2} alt="Juguete de perro" />
-      <h4>Nombre del juguete</h4>
-      <p>Precio $0000</p>
-      <div className="descripcion">Descripción</div>
-      <button>Comprar</button>
-    </div>
-    <div className="tienda-item">
-      <img src={toy2} alt="Juguete de perro" />
-      <h4>Nombre del juguete</h4>
-      <p>Precio $0000</p>
-      <div className="descripcion">Descripción</div>
-      <button>Comprar</button>
-    </div>
-    
-  </div>
-</div>
-        </>
-    )
 }
 
 export default Tienda
