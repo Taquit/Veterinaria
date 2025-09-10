@@ -1,51 +1,152 @@
-.home-container {
-  max-width: 1100px;
-  margin: 80px auto;
-  padding: 0 16px;
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;700&display=swap');
+
+
+.container{
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  gap: 5vh;
+  background-color: #ffff;
+  height: 100%;
+  
+}
+
+#root{
+  max-width: 100%;
+  height: 260vh;
+  background-color: rgb(111, 111, 148);
+  padding: 0;
+  margin: 0;
+}
+
+.image{
+  margin-top: 14vh;
+  width: 100%;
+}
+
+.desccontainer{
+  /*background-color: rgb(153, 7, 75);  */
+  display: flex;
+  flex-direction: row;
+  gap: 5vw;
+  justify-content: center;
+  align-items: center;
+  height: 30%;
+
+ 
+}
+
+.description {
+  position: relative;
+  overflow: hidden; 
+  background-color: #ffe4cc;
+  width: 40vw;
+  height: 39vh;  
+  border-radius: 1vw;
+}
+
+.subtitle{
+  font-size: 1.7vw;
+  font-weight: 700;
+  color: #114050;
+  margin-left: 2vw;
+  text-align: left;
+}
+
+.textdesc{
+  font-size: 1.3vw;
+  font-weight: 500;
+  color: #000000;
+  margin-left: 2vw;
+  text-align: left;
+}
+
+.location{
+/*background-color: #db0000;*/  
+ width: 100%;
+ height: 60%;
+ display: flex;
+ align-items: center;
+ justify-content: center;
+
+}
+
+.contlac{
+  background-color: #ffe4cc;
+  width: 70%;
+  height: 90%;
   display: flex;
   flex-direction: column;
-  gap: 20px;
-  font-family: Arial, sans-serif;
+  align-items: center;
+  justify-content: center;
+  border-radius: 1vw;   
 }
 
-/* Cards generales */
-.card {
-  background: #ffffff;
-  border: 1px solid #ddd;
+.map{
+  width: 90%;
+  height: 90%;
+  overflow: hidden;
   border-radius: 10px;
-  padding: 20px;
-  box-shadow: 0 3px 6px rgba(0,0,0,0.08);
 }
 
-/* Primera fila: 2 cuadros lado a lado */
+/*
+#root {
+  width: 100vw;
+  height: 100vh;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.home-container {
+  width: 98.83vw;
+  margin: 0;           
+  padding-top: 14vh;   
+  box-sizing: border-box; 
+  display: flex;
+  flex-direction: column;
+  gap: 1vw;
+  font-family: 'Poppins', sans-serif;
+  background: #2e1f5d;
+  justify-content: center;
+  align-items: center;
+}
+
+
+.card {
+  width: 95%;
+  box-sizing: border-box;
+}
+
+
 .row {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 20px;
 }
 
-/* Responsive: en móvil se apilan */
+
 @media (max-width: 768px) {
   .row {
     grid-template-columns: 1fr;
   }
 }
 
-/* Títulos */
+
 .card h1,
 .card h2,
 .card h3 {
   margin-top: 0;
-  color: #0d47a1;
+  color: #4e3503;
 }
 
-/* Texto */
+
 .card p {
   color: #374151;
   line-height: 1.6;
 }
 
-/* Lista de servicios */
+
 .links {
   list-style: none;
   padding: 0;
@@ -101,4 +202,4 @@
   width: 100%;
   height: 100%;
   border: none;
-}
+}*/
