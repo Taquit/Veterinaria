@@ -1,88 +1,51 @@
 import React, { useState } from "react";
-import { useFetchTienda } from "../../CustomHooks/useFetchTienda";
+import { dogBreeds,catBreed,birdType,reptilesType } from "../../CustomHooks/CatalogoPets";
 
-function ReMascotCard (){
-    const dogBreeds = [
-  "Affenpinscher","Africano","Airedale Terrier","Akita","Appenzeller","Pastor Australiano",
-  "Bakharwal","Basenji","Beagle","Bluetick Coonhound","Borzoi","Bouvier","Bóxer",
-  "Bruselas Griffon (Brabançon)","Briard","Buhund Noruego","Bulldog","Bull Terrier","Perro Boyero",
-  "Cavapoo","Chihuahua","Chippiparai","Chow Chow","Clumber Spaniel","Cockapoo","Collie",
-  "Coonhound","Corgi","Coton de Tulear","Dachshund (Salchicha)","Dálmata","Gran Danés",
-  "Perro Danés","Deerhound Escocés","Dhole","Dingo","Dóberman","Elkhound Noruego","Entlebucher",
-  "Esquimal Americano","Spitz Finlandés","Bichón Frisé","Gaddi","Pastor Alemán","Galgo",
-  "Groenendael","Habanero (Bichón Habanero)","Sabueso (Hound)","Husky Siberiano","Keeshond","Kelpie Australiano","Kombai",
-  "Komondor","Kuvasz","Labradoodle","Labrador Retriever","Leonberger","Lhasa Apso","Malamute de Alaska",
-  "Pastor Belga Malinois","Bichón Maltés","Mastín","Xoloitzcuintle (Perro sin pelo mexicano)","Mezcla","Perro de Montaña","Mudhol",
-  "Terranova (Newfoundland)","Otterhound","Ovcharka (Pastor caucásico)","Papillón","Pariah","Pekines","Corgi Galés de Pembroke",
-  "Pinscher","Pitbull","Pointer","Pomerania","Caniche (Poodle)","Pug (Carlino)",
-  "Puggle","Montaña de los Pirineos","Rajapalayam","Redbone Coonhound","Retriever","Ridgeback",
-  "Rottweiler","Saluki","Samoyedo","Schipperke","Schnauzer","Segugio Italiano","Setter",
-  "Shar Pei","Pastor (Sheepdog)","Shiba Inu","Shih Tzu","Spaniel","Spitz","Springer Spaniel",
-  "San Bernardo","Terrier","Tervueren (Pastor Belga)","Braco Húngaro (Vizsla)","Perro de Agua","Weimaraner","Whippet",
-  "Wolfhound Irlandés"
-];
-    const catBreed = [
-  "Abisinio","Egeo","American Bobtail","American Curl","American Ringtail",
-  "American Shorthair","American Wirehair","Aphrodite Giant","Mau árabe",
-  "Asiático","Semi-peludo Asiático","Australian Mist","Balinés","Bambino",
-  "Bengalí","Birmano","Bombay","Brazilian Shorthair","British Longhair",
-  "British Shorthair","Burmés","Burmilla","California Spangled",
-  "Chartreux (Cartujo)","Chantilly-Tiffany","Chausie","Li Hua chino",
-  "Colorpoint Pelo Largo","Colorpoint Persa","Colorpoint Pelo Corto",
-  "Cornish Rex","Cymric (Manx de pelo largo)","Devon Rex","Don Sphynx (Donskoy)",
-  "Dragon Li","Dwelf","Egyptian Mau","European Shorthair","Exótico (Pelo Corto)",
-  "Foldex","German Rex","Havana Brown","Highlander","Himalayo",
-  "Bobtail Japonés","Javanés","Kanaani","Khao Manee","Kinkalow",
-  "Korat","Bobtail Coreano","Bobtail Kurilian","Lambkin","LaPerm",
-  "Lykoi","Maine Coon","Manx","Mekong Bobtail","Minskin","Minuet",
-  "Munchkin","Nebelung","Neva Masquerade","Bosque de Noruega",
-  "Ocicat","Oriental (Largo/Corto)","Persa","Peterbald","Pixiebob",
-  "Ragamuffin","Ragdoll","Azul Ruso","Savannah","Scottish Fold",
-  "Selkirk Rex","Serengeti","Siamés","Siberiano","Singapura","Snowshoe",
-  "Sokoke","Somalí","Sphynx (Esfinge)","Suphalak","Tailandés",
-  "Tonkinés","Toybob","Toyger","Angora Turco","Van Turco",
-  "Levkoy Ucraniano","York Chocolate","Otro"
-];
-    const birdType = [
-  "Budgerigar (Periquito)", "Canario", "Agapornis (Lovebird)", "Cacatúa", "Loro gris africano","Loro Senegalés", 
-  "Loros Amazónicos", "Guacamayo (Macaw)", "Loro Eclectus", "Periquito Brotogeris", "Caiqué", "Periquito Poicephalus", 
-  "Periquito Psittacula (Ringneck)", "Loro Pionus", "Tucán"
-];
-    const reptilesTYpe = [
-  "Gecko leopardo","Gecko crestado","Dragón barbudo","Uromastyx","Anolis verde","Camaleón velado",  "Pitón bola",
-  "Serpiente de maíz","Serpiente rey de California","Serpiente leche","Tortuga de orejas rojas","Tortuga rusa","Tortuga griega",
-  "Tortuga de caja","Tortuga sulcata"
-];
+function ReMascotCard ({pet,onChange,onRemove,index}){
+
+    const handle=(e)=>{
+        const {name,value,type,checked,files}=e.target;
+        let val=value;
+        if(type === "checkbox") val=checked;
+        if(type ==="file") val = files?.[0] || null;
+        onChange({...pet,[name]:val});
+    };
 
 
 
-
-
-    const [specie,setSpecie]=useState("");
+    const specie = pet.specie;
 
     return(
         <>
             <div>
                 <h1>Mascota</h1>
                 <p>Formulario para la informacion de su mascota </p>
-                <form action="">
+                
                     <label > Nombre:</label>
-                    <input type="text" name="name" placeholder="Nombre de la mascota" />
+                    <input type="text" name="name" placeholder="Nombre de la mascota" value={pet.name || ""} onChange={handle}/>
                     <label >Foto</label>
-                    <input type="file" name="photo"/>
-                    <label >Edad:</label>
-                    <input type="number" name="age" />
+                    <input type="file" name="photo" onChange={handle}/>
+                    <label >Edad:</label> 
+                    <input type="number" name="age" value={pet.age || ""} onChange={handle}/>
                     <label>Sexo:</label>
-                    <select name="gender">
+                    <select name="sex" value={pet.sex || ""} onChange={handle}>
                         <option value="">--Selecciona--</option>
                         <option value="M">Macho</option>
                         <option value="F">Hembra</option>
                         
                     </select>
                     <label>Peso</label>
-                    <input type="number" name="weigth" min={0} />
+                    <input type="number" name="weigth" min={0} value={pet.weigth} onChange={handle} />
+                    <label>Señas particulares</label>
+                    <input type="text" name="dist" placeholder="Ej. Mancha sobre la cabeza, Parece que tiene botas, Seis dedos ..." value={pet.dist || ""} onChange={handle}/>
+                    <label>Color:</label>
+                    <input type="text" name="color" placeholder="Ej. Negro,Blanco..." value={pet.color || ""} onChange={handle}/>
+                    <label >Color secundario:</label>
+                    <input type="text" name="color2" placeholder="Ej. Negro,Blanco, etc" value={pet.color2 || ""} onChange={handle}/>
+                    <label>Patron de colores:</label>
+                    <input type="text" name="patron" placeholder="Ej. Manchas negras, Atigrado,etc" value={pet.patron || ""} onChange={handle}/>
                     <label >Especie</label>
-                    <select name="specie" value={specie} onChange={(e)=> setSpecie(e.target.value)}>
+                    <select name="specie" value={pet.specie || ""} onChange={handle}>
                         <option value="">--Selecciona</option>
                         <option value="D">Perro</option>
                         <option value="C">Gato</option>
@@ -91,49 +54,81 @@ function ReMascotCard (){
                     </select>
                     {specie ==="D" && (
                         <div>
+                            <label>Pelo:</label>
+                            <input type="text" name="tipoPelo"  placeholder="Ej. Lasio, Risos, Pelon..." value={pet.breed || ""} onChange={handle}/>
                             <label>Raza:</label>
-                            <select name="breed" >
+                            <select name="breed" value={pet.breed || ""} onChange={handle} >
                                 <option value="">--Selecciona raza--</option>
                                 {dogBreeds.map((breed,i)=>(
                                     <option key={i} value={breed}>{breed}</option>
                                 ))}
                             </select>
+                            
+                            <label><input type="checkbox" name="rabia" checked={!!pet.rabia} onChange={handle} /> Rabia</label>
+                            <label><input type="checkbox" name="moquillo" checked={!!pet.moquillo} onChange={handle}/> Moquillo (Distemper)</label>
+                            <label><input type="checkbox" name="parvovirus" checked={!!pet.parvovirus} onChange={handle}/> Parvovirus</label>
+                            <label><input type="checkbox" name="hepatitis" checked={!!pet.hepatitis} onChange={handle}/> Hepatitis infecciosa (Adenovirus)</label>
+                            <label><input type="checkbox" name="leptospirosis" checked={!!pet.leptospirosis} onChange={handle}/> Leptospirosis</label>
+                            <label><input type="checkbox" name="bordetella" checked={!!pet.bordetella} onChange={handle}/> Bordetella (tos de las perreras)</label>
+                            <label><input type="checkbox" name="parainfluenza" checked={!!pet.parainfluenza} onChange={handle}/> Parainfluenza</label>
+                            <label><input type="checkbox" name="desparasitacion" checked={!!pet.desparasitacion} onChange={handle}/> Desparasitación</label>
+                            <label><input type="checkbox" name="certificado" checked={!!pet.certificado} onChange={handle}/> Certificado veterinario</label>
+                            <label><input type="checkbox" name="esterilizado" checked={!!pet.esterilizado} onChange={handle}/>Esterilizado</label>
                         </div>
                     )}
                     {specie === "C" && (
                         <div>
+                            <label>Pelo:</label>
+                            <input type="text" name="tipoPelo"  placeholder="Ej. Lasio, Risos, Pelon..." value={pet.breed || ""} onChange={handle}/>
                             <label>Raza:</label>
-                            <select name="breed">
+                            <select name="breed" value={pet.breed || ""} onChange={handle}>
                                 <option value="">--Selecciona raza--</option>
                                 {catBreed.map((breed,i)=>(
                                     <option key={i} value={{breed}}>{breed}</option>
                                 ))}
                             </select>
+                            <label><input type="checkbox" name="rabia" checked={!!pet.rabia} onChange={handle}/> Rabia</label>
+                            <label><input type="checkbox" name="triple_felina" checked={!!pet.triple_felina} onChange={handle}/> Triple felina (FVRCP)</label>
+                            <label><input type="checkbox" name="leucemia_felina" checked={!!pet.leucemia_felina} onChange={handle}/> Leucemia felina (FeLV)</label>
+                            <label><input type="checkbox" name="desparasitacion_gato" checked={!!pet.desparasitacion_gato} onChange={handle}/> Desparasitación</label>
+                            <label><input type="checkbox" name="certificado_gato" checked={!!pet.certificado_gato} onChange={handle}/> Certificado veterinario</label>
+                            <label><input type="checkbox" name="esterilizado" checked={!!pet.esterilizado} onChange={handle}/>Esterilizado</label>
                         </div>
                     )}
                     {specie === "B" && (
                         <div>
                             <label>Tipo de Ave:</label>
-                            <select name="type">
+                            <select name="type" value={pet.type || ""} onChange={handle}>
                                 <option value="">--Selecciona tipo</option>
                                 {birdType.map((breed,i)=>(
                                     <option key={i} value={breed}>{breed}</option>
                                 ))}
                             </select>
+                            <label><input type="checkbox" name="psitacosis_negativa" checked={!!pet.psitacosis_negativa} onChange={handle}/> Prueba negativa de psitacosis</label>
+                            <label><input type="checkbox" name="newcastle_vacuna" checked={!!pet.newcastle_vacuna} onChange={handle}/> Vacuna contra Newcastle</label>
+                            <label><input type="checkbox" name="muda_plumas" checked={!!pet.muda_plumas} onChange={handle}/> ¿Está mudando de plumas?</label>
+                            <label><input type="checkbox" name="arranca_plumas" checked={!!pet.arranca_plumas} onChange={handle}/> ¿Se arranca las plumas?</label>
+
                         </div>
                     )}
                     {specie === "R" && (
                         <div>
                             <label >Tipo de Reptil:</label>
-                            <select name="type">
+                            <select name="type" value={pet.type || ""} onChange={handle}>
                                 <option value="">--Seleciona tipo--</option>
-                                {reptilesTYpe.map((type,i)=>(
+                                {reptilesType.map((type,i)=>(
                                     <option key={i} value={type}>{type}</option>
                                 ))}
                             </select>
+                            <label><input type="checkbox" name="salmonela" checked={!!pet.salmonela} onChange={handle}/>Prueba de salmonela:</label>
+                            <label >Terrario:</label>
+                            <input type="text" name="terrario" value={!!pet.terrario} onChange={handle}/>
+                            <label><input type="checkbox" name="muda" checked={!!pet.muda} onChange={handle}/>Esta mudando de piel?</label>
                         </div>
                     )}
-                </form>
+                    <label>Padecimientos:</label>
+                    <input type="text" name="padecimientos" value={pet.padecimientos} onChange={handle}/>
+                
             </div>
         </>
     )
