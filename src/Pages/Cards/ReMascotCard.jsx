@@ -108,7 +108,7 @@ function ReMascotCard ({pet,onChange,onRemove,index}){
                             <label><input type="checkbox" name="newcastle_vacuna" checked={!!pet.newcastle_vacuna} onChange={handle}/> Vacuna contra Newcastle</label>
                             <label><input type="checkbox" name="muda_plumas" checked={!!pet.muda_plumas} onChange={handle}/> ¿Está mudando de plumas?</label>
                             <label><input type="checkbox" name="arranca_plumas" checked={!!pet.arranca_plumas} onChange={handle}/> ¿Se arranca las plumas?</label>
-
+gi
                         </div>
                     )}
                     {specie === "R" && (
