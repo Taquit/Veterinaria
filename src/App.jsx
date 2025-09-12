@@ -13,6 +13,7 @@ import Tienda from './Pages/Tienda'
 import Reservacion from './Pages/Reservacion'
 import Registro from './Pages/Registro'
 
+
 function App() {
 
   return (
