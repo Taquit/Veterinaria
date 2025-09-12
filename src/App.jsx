@@ -12,6 +12,7 @@ import Estetica from './Pages/Estetica'
 import Tienda from './Pages/Tienda'
 import Reservacion from './Pages/Reservacion'
 
+
 function App() {
 
   return (
