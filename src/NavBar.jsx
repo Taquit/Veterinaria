@@ -8,7 +8,7 @@
             <nav className="navbar">
                 
                 <div className="n">
-                    <p className="texto">Resort Manager</p>
+                    <p className="texto">Tellus Animalium</p>
                 </div>
                 <div className="links">
                     <Link to= '/' className="link">Inicio</Link>
