@@ -5,17 +5,21 @@
     
     const NavBar=()=>{
         return<>
+        
             <nav className="navbar">
-                <div className="logo">Resort Manger</div>
-                <ul className="links">
-                    <li><Link to= '/'>Inicio</Link></li>
-                    <li><Link to= '/hotel'>Hotel</Link></li>
-                    <li><Link to ='/tienda'>Tienda</Link></li>
-                    <li><Link to ='/estetica'>Estetica</Link></li>
-                    <li><Link to = '/login' >Inicio de Sesion</Link></li>
-                </ul>
+                
+                <div className="n">
+                    <p className="texto">Resort Manager</p>
+                </div>
+                <div className="links">
+                    <Link to= '/' className="link">Inicio</Link>
+                    <Link to= '/hotel'className="link">Hotel</Link>
+                    <Link to ='/tienda' className="link">Tienda</Link>
+                    <Link to ='/estetica'className="link">Estetica</Link>
+                    <Link to = '/login' className="link">Inicio de Sesion</Link>
+                </div>
             </nav>
         </>
     }
-
+  
     export default NavBar

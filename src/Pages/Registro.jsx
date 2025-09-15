@@ -1,12 +1,15 @@
 import React, { useState } from "react";
 import ReMascotCard from "./Cards/ReMascotCard";
 import ReOwnerCard from "./Cards/ReOwnerCard";
+import addIcon from "../Assets/addDiamond.svg"
+import './Css/Registro.css'
 
 function Registro(){
     const [owner,setOwner]=useState({
-        name:"",lastName:"",age:"",sex:"",email:"",password:"",phone:"",street:"",
-        block:"",postCode:"",RFC:"", RS:"",emName:"",emLastName:"",emAge:"",emEmail:"",emPhone:""
+        name:"",lastName:"",bday:"",sex:"",email:"",password:"",phone:"",street:"",
+        block:"",postCode:"",RFC:"", RS:"",emName:"",emLastName:"",emBday:"",emEmail:"",emPhone:""
     })
+
 
     const emptyPet=()=>({
         name: "", photo: null, age: "", gender: "", weight: "",
@@ -17,6 +20,8 @@ function Registro(){
         triple_felina: false, leucemia_felina: false,psitacosis_negativa: false, newcastle_vacuna: false,
         muda_plumas: false, arranca_plumas: false,salmonella_test: false, terrario: "", muda_piel: false,padecimientos:""
     })
+
+    const [currentStep,setCurrentStep]=useState(1)
 
     const [pets,setPets]=useState([emptyPet()])
 
@@ -36,10 +41,14 @@ function Registro(){
         setPets(pets.map((p,i)=>(i == idx ? next :p)));
     }
 
-    const removePet =(udx)=>{
+    const removePet =(idx)=>{
         if(pets.length ===1)return
         setPets(pets.filter((_,i)=>i !== idx));
     }
+
+    const goToStep=(step)=>{setCurrentStep(step)}
+    const nextStep=()=>{setCurrentStep(currentStep +1)}
+    const prevStep=()=>{setCurrentStep(currentStep -1)}
 
     const handleSubmit=(e)=>{
         e.preventDefault();
@@ -58,33 +67,48 @@ function Registro(){
 
     return(
         <>
-        <form onSubmit={handleSubmit}>
-            <ReOwnerCard owner={owner} onChange={setOwner}/>
-            <hr />
-
-            <h1>Mascotas</h1>
-            {pets.map((pet, idx) => (
-                <ReMascotCard
-                key={idx}
-                index={idx}
-                pet={pet}
-                onChange={(next) => updatePet(idx, next)}
-                onRemove={pets.length > 1 ? () => removePet(idx) : undefined}
-                />
-            ))}
-
-            <div className="actions">
-                <button type="button" onClick={addPet}>➕ Agregar otra mascota</button>
+        <div className="registro-container">
+            <div className="steps-container">
+                <button type="button" className={`step-btn ${currentStep === 1 ? "active" : ""}`} onClick={()=>goToStep(1)}>Dueño</button>                
+                <button type="button" className={`step-btn ${currentStep === 2 ? "active" : ""}`} onClick={()=>goToStep(2)}>Mascotas</button>
             </div>
+            <form className="registro-form" onSubmit={handleSubmit}>
+                {currentStep ===1 &&(
+                    <section className="owner-section">
+                        <ReOwnerCard owner={owner} onChange={setOwner}/>
+                    </section>
+                )}
 
-            <hr />
+                {currentStep ===2 &&(
+                    <section className="pets-section">
+                        <h1>Mascotas</h1>
+                        {pets.map((pet,idx)=>(
+                            <ReMascotCard key={idx} index={idx} pet={pet} onChange={(next)=>updatePet(idx,next)} onRemove={pets.length >1 ? ()=>removePet(idx) : undefined } />
+                        ))}
+                        <div className="add-pet-container">
+                            <button type="button" className="button" onClick={addPet}> 
+                                <img src={addIcon} alt="Agregar mascota"  aria-hidden="true" className="add-icon" onClick={addPet}/>
+                                Agregar otra mascota</button>
+                        </div>
+                        
+                    </section>
+                )}
+    {/*
+                <div>
+                    <button type="button" onClick={prevStep} disabled={currentStep ===1}> Anterior</button>
+                    {currentStep<2 ? (
+                        <button type="button" onClick={nextStep}> Siguiente</button>
+                    ):(
+                        <button type="submit"> Enviar</button>
+                    )}
+                </div>
+                */}
+            </form>
+            {currentStep ===2 && (
+                <div className="submit-container"><button type="submit" className="button"> Enviar</button></div>
+            )}
 
-            <div className="actions">
-                <button type="submit">Guardar registro</button>
-            </div>
-        </form>
-            
-            
+        </div>
         </>
     )
 }

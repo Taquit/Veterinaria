@@ -1,3 +1,4 @@
+/*
 .reservacion-container {
   max-width: 1200px;
   margin: 0 auto;
@@ -38,14 +39,12 @@ form {
   color: #333;
 }
 
-/* Columna de la mascota en 2 columnas amplias */
 .form-section:nth-child(2) {
   display: grid;
   grid-template-columns: repeat(2, minmax(260px, 1fr));
   gap: 18px 20px;
 }
 
-/* Servicio arriba ocupando todo el ancho */
 .form-section:nth-child(2) > label:first-of-type {
   grid-column: 1 / -1;
 }
@@ -67,7 +66,6 @@ input, select, textarea {
   box-sizing: border-box;
 }
 
-/* Campos que deben ir a lo ancho completo */
 .form-section:nth-child(2) textarea,
 .form-section:nth-child(1) label:last-of-type {
   grid-column: 1 / -1;
@@ -99,5 +97,5 @@ p {
   color: #555;
 }
 
-
+ Responsive */
 

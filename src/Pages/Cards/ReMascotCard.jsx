@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { dogBreeds,catBreed,birdType,reptilesType } from "../../CustomHooks/CatalogoPets";
+import "../Css/CardsCss/ReMascotCard.css"
 
 function ReMascotCard ({pet,onChange,onRemove,index}){
 
@@ -17,16 +18,18 @@ function ReMascotCard ({pet,onChange,onRemove,index}){
 
     return(
         <>
-            <div>
-                <h1>Mascota</h1>
-                <p>Formulario para la informacion de su mascota </p>
-                
+            <div className="mascotCard-section">
+                <div >
+                    <h2>Mascota #{(index ?? 0)+1}</h2>
+                    {onRemove && <button type="button" onClick={onRemove}>Eliminar</button>}
+                </div>
+                <section className="mascotCard-form"> 
                     <label > Nombre:</label>
                     <input type="text" name="name" placeholder="Nombre de la mascota" value={pet.name || ""} onChange={handle}/>
                     <label >Foto</label>
                     <input type="file" name="photo" onChange={handle}/>
-                    <label >Edad:</label> 
-                    <input type="number" name="age" value={pet.age || ""} onChange={handle}/>
+                    <label >Fecha de nacimiento:</label> 
+                    <input type="month"  min="1900-01"max={new Date().toISOString().slice(0,7)} name="bday" value={pet.age || ""} onChange={handle}/>
                     <label>Sexo:</label>
                     <select name="sex" value={pet.sex || ""} onChange={handle}>
                         <option value="">--Selecciona--</option>
@@ -34,8 +37,8 @@ function ReMascotCard ({pet,onChange,onRemove,index}){
                         <option value="F">Hembra</option>
                         
                     </select>
-                    <label>Peso</label>
-                    <input type="number" name="weigth" min={0} value={pet.weigth} onChange={handle} />
+                    <label>Peso:</label>
+                    <input type="number" name="weigth" placeholder="Kg" min={0} value={pet.weigth} onChange={handle} />
                     <label>Señas particulares</label>
                     <input type="text" name="dist" placeholder="Ej. Mancha sobre la cabeza, Parece que tiene botas, Seis dedos ..." value={pet.dist || ""} onChange={handle}/>
                     <label>Color:</label>
@@ -55,7 +58,7 @@ function ReMascotCard ({pet,onChange,onRemove,index}){
                     {specie ==="D" && (
                         <div>
                             <label>Pelo:</label>
-                            <input type="text" name="tipoPelo"  placeholder="Ej. Lasio, Risos, Pelon..." value={pet.breed || ""} onChange={handle}/>
+                            <input type="text" name="tipoPelo"  placeholder="Ej. Lasio, Risos, Pelon..." value={pet.tipoPelo || ""} onChange={handle}/>
                             <label>Raza:</label>
                             <select name="breed" value={pet.breed || ""} onChange={handle} >
                                 <option value="">--Selecciona raza--</option>
@@ -79,7 +82,7 @@ function ReMascotCard ({pet,onChange,onRemove,index}){
                     {specie === "C" && (
                         <div>
                             <label>Pelo:</label>
-                            <input type="text" name="tipoPelo"  placeholder="Ej. Lasio, Risos, Pelon..." value={pet.breed || ""} onChange={handle}/>
+                            <input type="text" name="tipoPelo"  placeholder="Ej. Lasio, Risos, Pelon..." value={pet.tipoPelo     || ""} onChange={handle}/>
                             <label>Raza:</label>
                             <select name="breed" value={pet.breed || ""} onChange={handle}>
                                 <option value="">--Selecciona raza--</option>
@@ -108,7 +111,6 @@ function ReMascotCard ({pet,onChange,onRemove,index}){
                             <label><input type="checkbox" name="newcastle_vacuna" checked={!!pet.newcastle_vacuna} onChange={handle}/> Vacuna contra Newcastle</label>
                             <label><input type="checkbox" name="muda_plumas" checked={!!pet.muda_plumas} onChange={handle}/> ¿Está mudando de plumas?</label>
                             <label><input type="checkbox" name="arranca_plumas" checked={!!pet.arranca_plumas} onChange={handle}/> ¿Se arranca las plumas?</label>
-gi
                         </div>
                     )}
                     {specie === "R" && (
@@ -122,13 +124,13 @@ gi
                             </select>
                             <label><input type="checkbox" name="salmonela" checked={!!pet.salmonela} onChange={handle}/>Prueba de salmonela:</label>
                             <label >Terrario:</label>
-                            <input type="text" name="terrario" value={!!pet.terrario} onChange={handle}/>
+                            <input type="text" name="terrario" value={pet.terrario || ""} onChange={handle}/>
                             <label><input type="checkbox" name="muda" checked={!!pet.muda} onChange={handle}/>Esta mudando de piel?</label>
                         </div>
                     )}
                     <label>Padecimientos:</label>
-                    <input type="text" name="padecimientos" value={pet.padecimientos} onChange={handle}/>
-                
+                    <input className="padecimientos" type="text" name="padecimientos" value={pet.padecimientos} onChange={handle}/>
+                </section>
             </div>
         </>
     )
