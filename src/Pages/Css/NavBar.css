@@ -65,11 +65,13 @@ body {
   text-decoration: none;
   font-weight: 700;
   font-size: 1.2vw;
-}
-.links li a:hover {
-  text-decoration: underline;
+   transition: color 0.3s, transform 0.3s;
 }
 
+.link:hover {
+  color: #114050; /* Elige el color que prefieras */
+  transform: scale(1.6);
+}
 
 .navbar .links li a {
   color: #ffffff;

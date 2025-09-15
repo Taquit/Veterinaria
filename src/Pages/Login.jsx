@@ -19,15 +19,21 @@ const LoginForm = ({ setLoggedIn }) => {
   };
 
   return (
-    <>
-      <div><h1>Inicio de Sesión</h1></div>
-      <form onSubmit={handleSubmit}>
+
+  <div className="login-container">
+    <div className="login-ttl">
+        <p className="login-title">Bienvenido de nuevo</p>
+        <p className="logindesc">Ingrese los siguientes datos para volver a inciar de nuevo con nostros .D</p>
+      </div>
+      <form onSubmit={handleSubmit} className="login-form">
+        <p className="login-correo">Correo Electronico</p>
         <input
           type="email"
           placeholder="Correo Electrónico"
           value={formData.user}
           onChange={(e) => setFormData({ ...formData, user: e.target.value })}
         />
+        <p className="login-correo">Contraseña</p>
         <input
           type="password"
           placeholder="Contraseña"
@@ -36,7 +42,7 @@ const LoginForm = ({ setLoggedIn }) => {
         />
         <button type="submit">Entrar</button>
       </form>
-    </>
+    </div>
   );
 };
 

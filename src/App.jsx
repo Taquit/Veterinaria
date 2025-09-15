@@ -11,6 +11,9 @@ import Hotel from './Pages/Hotel'
 import Estetica from './Pages/Estetica'
 import Tienda from './Pages/Tienda'
 import Reservacion from './Pages/Reservacion'
+import 'bootstrap/dist/css/bootstrap.min.css';
+import Carousel from 'react-bootstrap/Carousel';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 
 function App() {
