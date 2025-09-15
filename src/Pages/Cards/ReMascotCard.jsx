@@ -19,9 +19,9 @@ function ReMascotCard ({pet,onChange,onRemove,index}){
     return(
         <>
             <div className="mascotCard-section">
-                <div >
+                <div className="mascotCard-header">
                     <h2>Mascota #{(index ?? 0)+1}</h2>
-                    {onRemove && <button type="button" onClick={onRemove}>Eliminar</button>}
+                    {onRemove && <button type="button" className="rmv-button" onClick={onRemove}>Eliminar</button>}
                 </div>
                 <section className="mascotCard-form"> 
                     <label > Nombre:</label>

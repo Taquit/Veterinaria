@@ -36,7 +36,7 @@ Paleta de colores:
   line-height: 1;
 }
 
-.step-btn:hover{ background: #f9a61a; }
+.step-btn:hover{ background: #ffe4cc; color: #0b0b0b; }
 .step-btn:active{ transform: translateY(1px); }
 
 .step-btn:focus-visible{
@@ -45,9 +45,9 @@ Paleta de colores:
 }
 
 .step-btn.active{
-  background: #f9a61a;
+  background:  #fc560b;
   border-color: var(--brand-border);
-  color: #0b0b0b;
+  color: white;
   box-shadow: 0 0 0 4px color-mix(in srgb, var(--brand), transparent 80%);
 }
 
@@ -57,17 +57,17 @@ Paleta de colores:
 }
 
 .step-btn{
-  padding: 14px 24px;   /* ↑ alto y ancho */
-  font-size: 18px;      /* ↑ texto */
-  min-height: 48px;     /* objetivo táctil recomendado */
-  min-width: 160px;     /* que no queden muy cortos */
-  white-space: nowrap;  /* evita saltos de línea */
+  padding: 14px 24px;   
+  font-size: 18px;      
+  min-height: 48px;     
+  min-width: 160px;     
+  white-space: nowrap;  
 }
 
 .add-pet-container{
   width: 100%;
   display: flex;
-  justify-content: center;  /* centra el botón horizontalmente */
+  justify-content: center;  
   align-items: center;
   padding: 12px 0;
   margin: 16px 0;
@@ -75,11 +75,11 @@ Paleta de colores:
 .add-pet-container .button{
   display: inline-flex;
   align-items: center;
-  gap: 10px;                 /* espacio icono-texto */
+  gap: 10px;                 
   padding: 12px 18px;
   border: none;
   border-radius: 10px;
-  background: #114050;       /* color base (ajusta a tu paleta) */
+  background: #114050;       
   color: #fff;
   font-weight: 700;
   line-height: 1;
@@ -101,7 +101,7 @@ Paleta de colores:
   box-shadow: 0 0 0 3px rgba(17,64,80,.25), 0 2px 6px rgba(0,0,0,.12);
 }
 
-/* Icono */
+
 .add-pet-container .add-icon{
   width: 20px;
   height: 20px;
@@ -110,13 +110,13 @@ Paleta de colores:
 .submit-container{
   width: 100%;
   display: flex;
-  justify-content: center;   /* centra el botón */
+  justify-content: center;   
   align-items: center;
   margin: 20px 0;
   padding: 8px 0;
 }
 
-/* Botón Enviar (reusa .button y lo haces “primario”) */
+
 .submit-container .button{
   display: inline-flex;
   align-items: center;
@@ -125,7 +125,7 @@ Paleta de colores:
   padding: 12px 22px;
   border: none;
   border-radius: 10px;
-  background: #114050;       /* primario (de tu paleta) */
+  background: #114050;       
   color: #fff;
   font-weight: 800;
   min-width: 180px;
