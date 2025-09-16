@@ -68,6 +68,8 @@ function Registro(){
     return(
         <>
         <div className="registro-container">
+            <p className="registro-tittle">Empecemos!</p>
+            <p className="registro-texto">Para poder proseguir con su registro y realizar reservaciones, ingrese los siguientes datos que se le solicitan</p>
             <div className="steps-container">
                 <button type="button" className={`step-btn ${currentStep === 1 ? "active" : ""}`} onClick={()=>goToStep(1)}>Dueño</button>                
                 <button type="button" className={`step-btn ${currentStep === 2 ? "active" : ""}`} onClick={()=>goToStep(2)}>Mascotas</button>
@@ -81,7 +83,6 @@ function Registro(){
 
                 {currentStep ===2 &&(
                     <section className="pets-section">
-                        <h1>Mascotas</h1>
                         {pets.map((pet,idx)=>(
                             <ReMascotCard key={idx} index={idx} pet={pet} onChange={(next)=>updatePet(idx,next)} onRemove={pets.length >1 ? ()=>removePet(idx) : undefined } />
                         ))}
