@@ -2,6 +2,7 @@
     import { Link } from "react-router-dom";
     import './Pages/Css/NavBar.css'
 
+    
     const NavBar=()=>{
         return<>
         

@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import './Css/Login.css'
-
+import { Link } from "react-router-dom";
 
 const LoginForm = ({ setLoggedIn }) => {
   const [formData, setFormData] = useState({
@@ -8,6 +8,7 @@ const LoginForm = ({ setLoggedIn }) => {
     password: "",
   });
 
+  
   const handleSubmit = (e) => {
     e.preventDefault();
     if (formData.user && formData.password) {
@@ -41,6 +42,7 @@ const LoginForm = ({ setLoggedIn }) => {
         />
         <button type="submit">Entrar</button>
       </form>
+      <Link to = '/registro'>Registrarse</Link>
     </div>
   );
 };

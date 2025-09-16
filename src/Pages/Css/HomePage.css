@@ -9,7 +9,9 @@
   /*background-color: #ff0000;*/
   height: 100%;
   
+  
 }
+
 
 #root{
   max-width: 100%;
@@ -210,54 +212,53 @@
 }
 
 .home-container {
-  width: 98.83vw;
-  margin: 0;           
-  padding-top: 14vh;   
-  box-sizing: border-box; 
+  max-width: 1100px;
+  margin: 80px auto;
+  padding: 0 16px;
   display: flex;
   flex-direction: column;
-  gap: 1vw;
-  font-family: 'Poppins', sans-serif;
-  background: #2e1f5d;
-  justify-content: center;
-  align-items: center;
+  gap: 20px;
+  font-family: Arial, sans-serif;
 }
 
-
+/* Cards generales */
 .card {
-  width: 95%;
-  box-sizing: border-box;
+  background: #ffffff;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  padding: 20px;
+  box-shadow: 0 3px 6px rgba(0,0,0,0.08);
 }
 
-
+/* Primera fila: 2 cuadros lado a lado */
 .row {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 20px;
 }
 
-
+/* Responsive: en móvil se apilan */
 @media (max-width: 768px) {
   .row {
     grid-template-columns: 1fr;
   }
 }
 
-
+/* Títulos */
 .card h1,
 .card h2,
 .card h3 {
   margin-top: 0;
-  color: #4e3503;
+  color: #0d47a1;
 }
 
-
+/* Texto */
 .card p {
   color: #374151;
   line-height: 1.6;
 }
 
-
+/* Lista de servicios */
 .links {
   list-style: none;
   padding: 0;
@@ -313,4 +314,4 @@
   width: 100%;
   height: 100%;
   border: none;
-}*/
+}

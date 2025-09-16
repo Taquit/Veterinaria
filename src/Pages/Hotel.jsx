@@ -2,6 +2,7 @@ import React from "react";
 import "./Css/Hotel.css";
 import { Link } from "react-router-dom";
 
+
 function Hotel(){
     return(
         <div className="hotel-container">
