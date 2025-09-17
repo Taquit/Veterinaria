@@ -54,15 +54,15 @@ function ReOwnerCard ({owner,onChange}){
                     <label className="label-emContact">Nombre y Apellido:</label>
                     <div className="name-row">
                         <input type="text" name="emName" placeholder="Escribe su nombre" value={owner.emName || ""} onChange={handle}/>
-                        <input type="text" name="emLastName" placeholder="Escribe sus apellidos" value={owner.emLastNameE || ""} onChange={handle}/>
+                        <input type="text" name="emLastName" placeholder="Escribe sus apellidos" value={owner.emLastName || ""} onChange={handle}/>
                     </div>
                     
                     <label className="label-emContact">Fecha de nacimiento:</label>
                     <input type="date" name="emBday" value={owner.emBday || ""} onChange={handle} />
                     <label className="label-emContact" >Correo:</label>
-                    <input type="email" name="emEmail"  placeholder="ejemplo@correo.com" value={owner.emEmailE || ""} onChange={handle}/>
+                    <input type="email" name="emEmail"  placeholder="ejemplo@correo.com" value={owner.emEmail || ""} onChange={handle}/>
                     <label className="label-emContact">Telefono:</label>
-                    <input type="tel" name="emPhone" placeholder="+52 555-555-555" value={owner.emPhoneE || ""} onChange={handle}/>
+                    <input type="tel" name="emPhone" placeholder="+52 555-555-555" value={owner.emPhone || ""} onChange={handle}/>
                 </section>
             </div> 
         </>

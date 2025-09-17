@@ -1,10 +1,13 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import ReMascotCard from "./Cards/ReMascotCard";
 import ReOwnerCard from "./Cards/ReOwnerCard";
 import addIcon from "../Assets/addDiamond.svg"
 import './Css/Registro.css'
 
 function Registro(){
+    const navigate = useNavigate();
+
     const [owner,setOwner]=useState({
         name:"",lastName:"",bday:"",sex:"",email:"",password:"",phone:"",street:"",
         block:"",postCode:"",RFC:"", RS:"",emName:"",emLastName:"",emBday:"",emEmail:"",emPhone:""
@@ -27,7 +30,7 @@ function Registro(){
 
     const addPet=()=>{
         setPets([...pets,{
-            ame: "", photo: null, age: "", gender: "", weight: "",
+            name: "", photo: null, age: "", sex: "", weight: "",
         senas: "", color1: "", color2: "", pattern: "",
         specie: "", breed: "", type: "",rabia: false, parvovirus: false, moquillo: false, hepatitis: false,
         leptospirosis: false, bordetella: false, parainfluenza: false,
@@ -38,7 +41,7 @@ function Registro(){
     }
 
     const updatePet = (idx, next) =>{
-        setPets(pets.map((p,i)=>(i == idx ? next :p)));
+        setPets(pets.map((p,i)=>(i === idx ? next :p)));
     }
 
     const removePet =(idx)=>{
@@ -46,23 +49,24 @@ function Registro(){
         setPets(pets.filter((_,i)=>i !== idx));
     }
 
-    const goToStep=(step)=>{setCurrentStep(step)}
-    const nextStep=()=>{setCurrentStep(currentStep +1)}
-    const prevStep=()=>{setCurrentStep(currentStep -1)}
+    const goToStep=(step)=> setCurrentStep(step);
+    const nextStep=()=> setCurrentStep((s)=> s+1);
+    const prevStep=()=> setCurrentSteo((s)=> s-1);
 
     const handleSubmit=(e)=>{
         e.preventDefault();
 
-        const formData = new Formadata();
-        formData.append("owner",JSON.stringify(owner))
+        const formData = new FormData();
+        formData.append("owner",JSON.stringify(owner));
         pets.forEach((p, i) => {
         const { photo, ...rest } = p;
         formData.append(`pets[${i}]`, JSON.stringify(rest));
         if (photo) formData.append(`pets[${i}][photo]`, photo);
+        });
 
         console.log({ owner, pets });
-        alert("Formulario listo (revisa la consola). Aquí harías el POST a tu API.");
-    });
+        navigate('/homeUser',{state:{owner,pets}});
+    
     }
 
     return(
@@ -91,23 +95,13 @@ function Registro(){
                                 <img src={addIcon} alt="Agregar mascota"  aria-hidden="true" className="add-icon" onClick={addPet}/>
                                 Agregar otra mascota</button>
                         </div>
-                        
+                        {currentStep ===2 && (
+                            <div className="submit-container"><button type="submit" className="button"> Sign in</button></div>
+                        )}
                     </section>
                 )}
-    {/*
-                <div>
-                    <button type="button" onClick={prevStep} disabled={currentStep ===1}> Anterior</button>
-                    {currentStep<2 ? (
-                        <button type="button" onClick={nextStep}> Siguiente</button>
-                    ):(
-                        <button type="submit"> Enviar</button>
-                    )}
-                </div>
-                */}
             </form>
-            {currentStep ===2 && (
-                <div className="submit-container"><button type="submit" className="button"> Enviar</button></div>
-            )}
+            
 
         </div>
         </>

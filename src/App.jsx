@@ -12,6 +12,7 @@ import Estetica from './Pages/Estetica'
 import Tienda from './Pages/Tienda'
 import Reservacion from './Pages/Reservacion'
 import Registro from './Pages/Registro'
+import HomeUser from './Pages/UserPages/HomeUser'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Carousel from 'react-bootstrap/Carousel';
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -30,6 +31,7 @@ function App() {
         <Route path ='/tienda' element= {<Tienda></Tienda>}/>
         <Route path='/reservacion'element={<Reservacion></Reservacion>}/>
         <Route path='/registro'element={<Registro/>}/>
+        <Route path='/homeUser' element={<HomeUser/>}/>
       </Routes>
       <Footer></Footer>
     </>

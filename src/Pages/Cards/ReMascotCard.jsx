@@ -29,7 +29,7 @@ function ReMascotCard ({pet,onChange,onRemove,index}){
                     <label >Foto</label>
                     <input type="file" name="photo" onChange={handle}/>
                     <label >Fecha de nacimiento:</label> 
-                    <input type="month"  min="1900-01"max={new Date().toISOString().slice(0,7)} name="bday" value={pet.age || ""} onChange={handle}/>
+                    <input type="month"  min="1900-01"max={new Date().toISOString().slice(0,7)} name="bday" value={pet.bday || ""} onChange={handle}/>
                     <label>Sexo:</label>
                     <select name="sex" value={pet.sex || ""} onChange={handle}>
                         <option value="">--Selecciona--</option>

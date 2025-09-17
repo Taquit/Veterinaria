@@ -19,7 +19,7 @@ Paleta de colores:
 
 .ownerCard-section,.emContact-section{
     display: grid;
-    grid-template-columns: 150px 1fr; /* 150px para el label, resto para input */
+    grid-template-columns: 150px 1fr; 
     gap: 10px;
     justify-content: center;
     border: 2px solid black;
