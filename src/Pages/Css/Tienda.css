@@ -48,15 +48,27 @@
 }
 
 .tienda-item{
+
   background-color: #ffe4cc;
   display: flex;
   flex-direction: column;
   align-items: center;
   height: 100%;
   width: 30%;
-  gap: 1h;
+  gap: 1vh;
   padding:1vw;
   border-radius: 1vw;
+  transition: color 0.3s, transform 0.3s;
+}
+
+.tienda-item:hover,
+.tienda-button:hover .tienda-itemname,
+.tienda-button:hover .tienda-priceitem,
+.tienda-button:hover .tienda-descriptionitem,
+.tienda-button:hover .tienda-button{
+  color:#ffffff;
+  transform: scale(1.05);
+  background-color: #114050;
 }
 
 .tienda-itemimg{

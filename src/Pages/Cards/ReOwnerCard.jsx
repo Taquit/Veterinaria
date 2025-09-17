@@ -49,7 +49,7 @@ function ReOwnerCard ({owner,onChange}){
                     
                     
                 </section>
-                <section className="emContact-section"> 
+                <section className="emContact-section" id="emcntact-section"> 
                     <h2>Contacto de emergencia</h2>
                     <label className="label-emContact">Nombre y Apellido:</label>
                     <div className="name-row">

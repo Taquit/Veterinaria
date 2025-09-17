@@ -30,6 +30,10 @@ Paleta de colores:
     align-content: start;
 }
 
+#emcntact-section{
+  height: 50%;
+}
+
 .label-owner,.label-emContact{
     font-weight: bold;
     margin-right: 10px;

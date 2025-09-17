@@ -9,10 +9,11 @@ Paleta de colores:
 .registro-container{
     width: 100%;
     padding-top: 10%;
-    background-color: #ffff;
+    background-color: #ffffff;
 }
 
 .steps-container{
+  /*background-color: #0e3340;*/
   display: flex;
   gap: 12px;                       
   justify-content: center;
@@ -21,6 +22,21 @@ Paleta de colores:
   padding: 8px 0;
 }
 
+.registro-tittle{
+  font-size: 3vw;
+  font-weight: 800;
+  text-align: center;
+  margin-bottom: 8px;
+  color: #114050;
+}
+
+.registro-texto{
+  font-size: 1.5vw;
+  font-weight: 500;
+  text-align: center;
+  margin-bottom: 24px;
+  color: #114050;
+}
 .step-btn{
   appearance: none;
   border: 2px solid var(--btn-border);
